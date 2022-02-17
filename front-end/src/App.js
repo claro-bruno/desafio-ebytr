@@ -1,15 +1,22 @@
 import React from 'react';
-import './App.css';
-import rockGlass from './images/rockGlass.svg';
+import { ThemeProvider } from 'styled-components';
+import AuthProvider from './contexts/AuthContext';
+import TasksProvider from './contexts/TasksContext';
+
+import Routes from './routes';
+import GlobalStyle from './styles/global';
+import green from './styles/themes/green';
 
 function App() {
   return (
-    <div className="App">
-      <span className="logo">TRYBE</span>
-      <object className="rocksGlass" type="image/svg+xml" data={ rockGlass }>
-        Glass
-      </object>
-    </div>
+    <AuthProvider>
+      <TasksProvider>
+        <ThemeProvider theme={ green }>
+          <GlobalStyle />
+          <Routes />
+        </ThemeProvider>
+      </TasksProvider>
+    </AuthProvider>
   );
 }
 
